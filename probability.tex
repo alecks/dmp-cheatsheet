@@ -1,0 +1,70 @@
+\section{Probability}
+
+
+\subsection*{Counting}
+
+\begin{itemize}
+	\item Experiment 1 has \(n\) outcomes, another has \(m\). This gives \(n \cdot m\) outcomes. \(N\) repitions of Experiment 1 gives \(n^N\) outcomes. 
+	%
+	\item Permutations: how many ways to order a set. \(n!\), or if we count repeated items as indistinguishable, \(\frac{n!}{r_1! \cdot \cdots \cdot r_i!}\) where \(r_i\) is the number of times the number \(i\) was repeated.
+	%
+	\item \(P_{n,k} = \frac{n!}{(n-k)!}\) (\(\binom{n}{k}\) but order matters), \(\binom{n}{k} = \frac{n!}{k!(n-k)!}\)
+	%
+	\item The number of ways to choose something OR something else is addition. Choosing two things together (AND) is multiplication. If we are to find `at least one (up to 3)', it would be the number of ways to choose 1 OR 2 OR 3.
+\end{itemize}
+
+
+\subsection*{Probability Models}
+
+\begin{itemize}
+	\item \(\bigcup_{i} E_i\) means at least one \(E_i\) and \(\bigcap_{i} E_i\) means all of the \(E_i\)'s.
+	%
+	\item Mutex events (disjoint) can't happen at the same time. If \(E \subseteq F\), \(E\) can't happen without \(F\) happening. \(E^c = \Omega - E\).
+	%
+	\item Axioms: for countably many \textit{mutex} events, \(P(\bigcup E_i) = \sum_i P(E_i)\). If not mutex, this equality is replaced with \(\leq\).
+	%
+	\item Elementary events are those such that all events have probability \(\frac{1}{|\Omega|}\).
+	%
+	\item \(P(F-E) = P(F \cap E^c) = P(F)-P(F \cap E)\). This is the set difference law.
+	%
+	\item De Morgan's: \((E \cap F)^c = E^c \cup F^c\) (flip intersection/union and take complement).
+	%
+	%
+	\item \(P(E|F) = \frac{P(E \cap F)}{P(F)}\). All other axioms work fine, just add the `given' part to each.
+	%
+	\item Multiplication rule: \(P(E_1 \cap E_2 \cap \cdots \cap E_n) = P(E_1) \cdot P(E_2 | E_1) \cdot P(E_3 | E_1 \cap E_2) \cdots P(E_n | E_1 \cap \cdots \cap E_{n-1})\).
+	%
+	\item Independent \(\iff P(F|E) = P(F) \iff P(E|F) = P(E) \iff P(E \cap F) = P(E) \cdot P(F)\).
+	%
+	\item Three or more events are mutually independent if the above multiplication rule applies to all pairs, and all of them together.
+	%
+	\item Murphy's Law as \(n \to \infty\) with fixed probability \(p\): \(P(\text{all \(n\) experiments succeed})=p^n \to 0, P(\text{at least one succeeds})=1-P(\text{each one fails})=1-(1-p)^n \to 1, P(\text{exactly \(k\) succeed})=\binom{n}{k} \cdot p^k \cdot (1-p)^{n-k}\).
+\end{itemize}
+
+
+\subsection*{Discrete Random Variables}
+
+\begin{itemize}
+	\item PMF: \(p_X(x)=P(X=x)\), CDF: \(F_X(x)=P(X \leq x)\). CDF is non-decreasing.
+
+	\item \(\mathbb{E}(X) = \sum_i x_i \cdot p(x_i)\). Needn't be a possible value.
+
+	\item \(n\)th moment: \(\mathbb{E}(X^n)\). Absolute moment: \(\mathbb{E}(|X|^n)\).
+
+	\item \(Var(X) = \mathbb{E}(X - \mathbb{E}(X))^2 = \mathbb{E}(X^2) - \mathbb{E}(X)^2\). \(\operatorname{SD}(X) = \sqrt{\operatorname{Var}(X)}\).
+
+	\item Binomial: there are \(n\) independent trials, each succeeding with probability \(p\). \(X\) counts the number of successes: \(X \sim \operatorname{Bin}(n,p)\). If \(n=1\), this is Bernoulli where \(P(X=1)=p\) is the probability of the `only' success. \(p(x)=P(\text{number of successes is x}) = \binom{n}{x} p^x (1-p)^{n-x}\), \(\mathbb{E}(X)=np\), \(\operatorname{Var}(X)=np(1-p)\).
+
+	\item Poisson: \(X \sim \operatorname{Pois}(\lambda \in \mathbb{R}^+)\) if \(p(x)=e^{-\lambda} \cdot \frac{\lambda^x}{x!}\), \(\mathbb{E}(X)=\operatorname{Var}(X)=\lambda\). Poisson measures the probability of a number of events happening in a space, based on an average (\(\lambda\)). For example, number of calls per hour, or number of typos on a page. \(\operatorname{Bin}(n,p) \approx \operatorname{Pois}(np)\) for large \(n\) and small \(p\).
+
+	\item Geometric: \(X \sim \operatorname{Geom}(p)\) counts the number of independent trials repeated until we get a success (with probability \(p\)), with no memory. \(p(x)=p(1-p)^{x-1}\), \(\mathbb{E}(X)=\frac{1}{p}\), \(\operatorname{Var}(X)=\frac{1-p}{p^2}\).
+\end{itemize}
+
+
+\subsection*{Continuous Random Variables}
+
+\begin{itemize}
+
+\item penis
+
+\end{itemize}
