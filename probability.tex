@@ -46,17 +46,17 @@
 
 \begin{itemize}
 	\item PMF: \(p_X(x)=P(X=x)\), CDF: \(F_X(x)=P(X \leq x)\). CDF is non-decreasing.
-
+	%
 	\item \(\mathbb{E}(X) = \sum_i x_i \cdot p(x_i)\). Needn't be a possible value.
-
+	%
 	\item \(n\)th moment: \(\mathbb{E}(X^n)\). Absolute moment: \(\mathbb{E}(|X|^n)\).
-
+	%
 	\item \(Var(X) = \mathbb{E}(X - \mathbb{E}(X))^2 = \mathbb{E}(X^2) - \mathbb{E}(X)^2\). \(\operatorname{SD}(X) = \sqrt{\operatorname{Var}(X)}\).
-
+	%
 	\item Binomial: there are \(n\) independent trials, each succeeding with probability \(p\). \(X\) counts the number of successes: \(X \sim \operatorname{Bin}(n,p)\). If \(n=1\), this is Bernoulli where \(P(X=1)=p\) is the probability of the `only' success. \(p(x)=P(\text{number of successes is x}) = \binom{n}{x} p^x (1-p)^{n-x}\), \(\mathbb{E}(X)=np\), \(\operatorname{Var}(X)=np(1-p)\).
-
+	%
 	\item Poisson: \(X \sim \operatorname{Pois}(\lambda \in \mathbb{R}^+)\) if \(p(x)=e^{-\lambda} \cdot \frac{\lambda^x}{x!}\), \(\mathbb{E}(X)=\operatorname{Var}(X)=\lambda\). Poisson measures the probability of a number of events happening in a space, based on an average (\(\lambda\)). For example, number of calls per hour, or number of typos on a page. \(\operatorname{Bin}(n,p) \approx \operatorname{Pois}(np)\) for large \(n\) and small \(p\).
-
+	%
 	\item Geometric: \(X \sim \operatorname{Geom}(p)\) counts the number of independent trials repeated until we get a success (with probability \(p\)), with no memory. \(p(x)=p(1-p)^{x-1}\), \(\mathbb{E}(X)=\frac{1}{p}\), \(\operatorname{Var}(X)=\frac{1-p}{p^2}\).
 \end{itemize}
 
