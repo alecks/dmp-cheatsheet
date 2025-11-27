@@ -64,5 +64,15 @@
 \subsection*{Continuous Random Variables}
 
 \begin{itemize}
-\item test
+\item The PDF is defined as being the function \(f(x)\) such that its integral, from \(a\) to \(b\), gives the probability \(P(a \leq x \leq b)\), and from \(-\infty\) to \(\infty\) gives \(1\). The derivative of the CDF is the PDF.
+%
+\item CDF: \(F(x) = P(X \leq x) = \int_{-\infty}^{x}f(y)\,dy\). There will usually be a lower bound for \(Y\), such that any values of \(Y\) less than this lower bound will have a \(0\) probability, meaning we don't have to compute an improper integral.
+%
+\item \(P(X > a)=1-F(a)\), \(P(a \leq X \leq b)=F(b)-F(a)\).
+%
+%
+\item Uniform: \(X \sim U(a,b)\) if \(f(x)=\frac{1}{b-a}\) if \(a \leq x \leq b\), \(f(x)=0\) otherwise. Equal probabilities for anything between \(a\) and \(b\), otherwise \(0\).
+%
+\item No real need for CDF. Use rectangle intuition: the height is \(\frac{1}{b-a}\) and the width would be the amount `along' the rectangle you would be. \(P(a \leq X \leq c) = (c-a) \cdot \frac{1}{b-a} = P(X \leq c)\) if the probability is equal between \(a\) and \(b\).
+%
 \end{itemize}
