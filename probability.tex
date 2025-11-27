@@ -30,7 +30,7 @@
 	\item De Morgan's: \((E \cap F)^c = E^c \cup F^c\) (flip intersection/union and take complement).
 	%
 	%
-	\item \(P(E|F) = \frac{P(E \cap F)}{P(F)}\). All other axioms work fine, just add the `given' part to each.
+	\item \(P(E|F) = \frac{P(E \cap F)}{P(F)}\). All axioms work fine, just add the `given' part to each.
 	%
 	\item Multiplication rule: \(P(E_1 \cap E_2 \cap \cdots \cap E_n) = P(E_1) \cdot P(E_2 | E_1) \cdot P(E_3 | E_1 \cap E_2) \cdots P(E_n | E_1 \cap \cdots \cap E_{n-1})\).
 	%
@@ -45,13 +45,15 @@
 \subsection*{Discrete Random Variables}
 
 \begin{itemize}
-	\item PMF: \(p_X(x)=P(X=x)\), CDF: \(F_X(x)=P(X \leq x)\). CDF is non-decreasing.
+	\item PMF: \(p_X(x)=P(X=x)\), CDF: \(F_X(x)=P(X \leq x)\). \textbf{CDF is non-decreasing.}
 	%
-	\item \(\mathbb{E}(X) = \sum_i x_i \cdot p(x_i)\). Needn't be a possible value.
-	%
-	\item \(n\)th moment: \(\mathbb{E}(X^n)\). Absolute moment: \(\mathbb{E}(|X|^n)\).
+	\item \(\mathbb{E}(X) = \sum_i x_i \cdot p(x_i)\). Needn't be a possible value. Expectation can be manipulated linearly. \(n\)th moment: \(\mathbb{E}(X^n)\). Absolute moment: \(\mathbb{E}(|X|^n)\).
 	%
 	\item \(\operatorname{Var}(X) = \mathbb{E}(X - \mathbb{E}(X))^2 = \mathbb{E}(X^2) - \mathbb{E}(X)^2\). \(\operatorname{SD}(X) = \sqrt{\operatorname{Var}(X)}\).
+	%
+	\item \textbf{Linearity of \(\mathbb{E}\)}: expectation of the sum of RVs is the sum of their expectations. \textbf{Rescaling}: \(\mathbb{E}(aX + b)=a \mathbb{E}(X) + b\), \(\operatorname{Var}(aX + b) = a^2 \operatorname{Var}(X)\), \(\operatorname{SD}(aX+b) = |a|\operatorname{SD}(X)\).
+	%
+	\item \textbf{Chebyshev Inequality}: for any constant \(k \geq 1\), the probability that \(X\) is more than \(k\) standard deviations away from the mean is no more than \(\frac{1}{k^2}\). \(P(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2}\).
 	%
 	\item Binomial: there are \(n\) independent trials, each succeeding with probability \(p\). \(X\) counts the number of successes: \(X \sim \operatorname{Bin}(n,p)\). If \(n=1\), this is Bernoulli where \(P(X=1)=p\) is the probability of the `only' success. \(p(x)=P(\text{number of successes is x}) = \binom{n}{x} p^x (1-p)^{n-x}\), \(\mathbb{E}(X)=np\), \(\operatorname{Var}(X)=np(1-p)\).
 	%
@@ -63,6 +65,8 @@
 
 \subsection*{Continuous Random Variables}
 
+\textbf{Bold items from the discrete section also apply here.}
+
 \begin{itemize}
 \item The PDF is defined as being the function \(f(x)\) such that its integral, from \(a\) to \(b\), gives the probability \(P(a \leq x \leq b)\), and from \(-\infty\) to \(\infty\) gives \(1\). The derivative of the CDF is the PDF.
 %
@@ -70,9 +74,30 @@
 %
 \item \(P(X > a)=1-F(a)\), \(P(a \leq X \leq b)=F(b)-F(a)\).
 %
+\item Percentiles: the 75th percentile is the value \(\eta_{0.75}\) s.t. \(P(X < \eta) = 0.75\). Thus we can calculate it with the inverse of the CDF: \(\eta_{0.5}=F^{-1}(0.5)\), which also happens to be the \textit{median}, sometimes written just \(\eta\).
 %
+\item \(\mathbb{E}(X) = \int_{-\infty}^{\infty} x \cdot f(x)\,dx = \mu_X\), \(\mathbb{E}(h(X)) = \int_{-\infty}^{\infty} h(x) \cdot f(x)\,dx\) (check \(X\) / \(x\)).
+%
+\item \(\operatorname{Var}(X) = \mathbb{E}((X - \mathbb{E}(X))^2) = \mathbb{E}(X^2) - \mu^2\), \(\operatorname{SD}(X) = \sigma_X = \sqrt{\operatorname{Var}(X)}\).
+%
+% 
 \item Uniform: \(X \sim U(a,b)\) if \(f(x)=\frac{1}{b-a}\) if \(a \leq x \leq b\), \(f(x)=0\) otherwise. Equal probabilities for anything between \(a\) and \(b\), otherwise \(0\).
 %
-\item No real need for CDF. Use rectangle intuition: the height is \(\frac{1}{b-a}\) and the width would be the amount `along' the rectangle you would be. \(P(a \leq X \leq c) = (c-a) \cdot \frac{1}{b-a} = P(X \leq c)\) if the probability is equal between \(a\) and \(b\).
+\item No real need for CDF. Use rectangle intuition: the height is \(\frac{1}{b-a}\) and the width would be the amount `along' the rectangle you would be. \(P(a \leq X \leq c) = (c-a) \cdot \frac{1}{b-a} = P(X \leq c)\) if the probability is equal between \(a\) and \(b\). If the density is high, the CDF's graph is steep.
 %
+\item Normal (Gaussian): \(X \sim N(\mu, \sigma)\) if \(f(x; \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} \cdot e^{-(x-\mu)^2 / (2\sigma^2)}\). \(\mu\) is the centre while \(\sigma\) measures how widely spread it is. Height, sheep producing wool, etc., where many random factors are involved.
+%
+\item About \(\frac{2}{3}\) of probability mass is within one SD of the mean, 95\% within two.
+%
+\item Standard normal if \(\mu=0\) and \(\sigma=1\). \(f(z; 0,1) = \frac{1}{\sqrt{2\pi}} \cdot e^{-z^2 / 2}\).
+%
+\item Standardising: If \(X \sim N(\mu, \sigma)\), \(Z=\frac{X-\mu}{\sigma} \mid Z \sim N(0,1)\). \(P(X \leq a) = P(Z \leq \frac{a-\mu}{\sigma}) = \Phi(\frac{a-\mu}{\sigma})\), \(\eta_p = \mu + \Phi^{-1}(p) \cdot \sigma\). Go opposite way in table for inverse.
+%
+\item Approximating binomial: find \(\mu = np\) and \(\sigma = \sqrt{npq}\) where \(q = (1-p)\). Use these two values as parameters for normal. Thus \(P(X \leq x) = \Phi(\frac{x + 0.5 - np}{\sqrt{npq}})\). Adequate if \(np,nq\geq 10\). We add \(0.5\) for continuity correction.
+%
+\item Exponential: how long until something happens, with no memory: \(X \sim \operatorname{Exp}(\lambda)\) if \(f(x; \lambda) = \lambda e^{-\lambda x}\) if \(x > 0\), \(0\) otherwise. \(F(x; \lambda) = 1-e^{-\lambda x}\) if \(x > 0\), \(0\) otherwise.
+%
+\item \(\mathbb{E}(X) = \frac{1}{\lambda} = \operatorname{SD}(X)\). \(\operatorname{Var}(X) = \frac{1}{\lambda^2}\).
+%
+\item Relation to Poisson: Poisson counts the number of arrivals each minute, while exponential counts the time between arrivals at a drive-through.
 \end{itemize}
