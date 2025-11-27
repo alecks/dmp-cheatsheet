@@ -104,7 +104,9 @@
 \begin{itemize}
 	\item \textbf{Linearity of \(\mathbb{E}\)}: expectation of the sum of RVs is the sum of their expectations. \textbf{Rescaling}: \(\mathbb{E}(aX + b)=a \mathbb{E}(X) + b\), \(\operatorname{Var}(aX + b) = a^2 \operatorname{Var}(X)\), \(\operatorname{SD}(aX+b) = |a|\operatorname{SD}(X)\).
 	%
-	\item \(\mathbb{E}(h(X)) = \int_{-\infty}^{\infty} h(x) \cdot f(x)\,dx\).
+	\item \(\mathbb{E}(h(X)) = \int_{-\infty}^{\infty} h(x) \cdot f(x)\,dx\), \(E(h(X)) = \sum_i h(x_i) \cdot p(x_i)\).
+	%
+	\item \(\operatorname{Cov}(aX+b,cY+d) = ac \operatorname{Cov}(X,Y)\), \(\operatorname{Cov}(aX+bY+c, Z) = a\operatorname{Cov}(X,Z) + b\operatorname{Cov}(Y,Z)\).
 	%
 	\item \textbf{Transformations of RVs are themselves RVs}: if a transformation of a random variable \(Y=g(X)\) is monotonically increasing, like radius to area, then CDF is \(F_Y(y)=F_X(g^{-1}(y))\). If monotonically decreasing, like speed to time, then \(F_Y(y)=1 - F_X(g^{-1}(y))\) since the inequality is flipped.
 	%
@@ -121,6 +123,8 @@
 	\item Marginal probabilities allow you to calculate individual variables' PMFs from their JPMF: \(p_X(x)=\sum_y p(x,y)\), \(p_Y(y)=\sum_x p(x,y)\). If given a table, add up the values in each column or row.
 	%
 	\item Independent \(\iff p(x,y) = p_X(x) \cdot p_Y(y)\) for all \((x,y)\).
+	%
+	\item \(\mathbb{E}(g(X,Y)) = \sum_x \sum_y g(x,y) \cdot p(x,y)\).
 \end{itemize}
 
 \subsubsection*{Continuous}
@@ -132,5 +136,28 @@
 	%
 	\item Independent \(\iff f(x,y) = f_X(x) \cdot f_Y(y)\) for all \((x,y)\).
 	%
-	\item \textbf{All of these definitions can be extended to more than one random variable by repeating integration or summing over triples, etc.}.
+	\item \(\mathbb{E}(g(X,Y)) = \int_{-\infty}^{\infty} (\int_{-\infty}^{\infty} g(x,y) \cdot f(x,y)\,dx)\,dy\).
+\end{itemize}
+
+\subsubsection*{Variance, Sums and Combinations}
+
+\begin{itemize}
+	\item \textbf{Linearity of expectation applies. Multiplying expectations of different random variables applies only if they are independent:} \(\mathbb{E}(h(X,Y)) = \mathbb{E}(g_1(X) \cdot g_2(Y)) = \mathbb{E}(g_1(X)) \cdot \mathbb{E}(g_2(Y))\), and \(h(X,Y)=g_1(X) \cdot g_2(X)\).
+	%
+	\item \textbf{Covariance}: how much do \(X\) and \(Y\) vary together? If \(\operatorname{Cov}(X, Y) > 0\), they vary together. If \(0\), they do not vary together. Vary in opposition otherwise. X and Y independent \(\implies \operatorname{Cov}(X,Y)=0\), but not the other way round.
+	%
+	\item \textbf{Definition of \(\operatorname{Cov}\)}: \(\operatorname{Cov}(X,Y)=\operatorname{Cov}(Y,X) = \mathbb{E}(XY)-\mu_X \cdot \mu_Y\), \(\operatorname{Cov}(X,X)=\operatorname{Var}(X)\).
+	%
+	\item \textbf{Correlation coefficient}: similar to standard deviation. \(\rho_{X,Y}=\operatorname{Corr}(X,Y)=\frac{\operatorname{Cov}(X,Y)}{\sigma_X \cdot \sigma_Y}\). If \(\rho > 0\), positively correlated. Not linearly correlated or negatively correlated otherwise.
+	%
+	\item \textbf{Properties of \(\operatorname{Corr}\)}: \(\operatorname{Corr}(X,Y)=\operatorname{Corr}(Y,X)\), \(\operatorname{Corr(X,X)=1}\) \(\operatorname{Corr}(X,Y)=0 \iff \mathbb{E}(XY) = \mu_X \cdot \mu_Y\), \(\operatorname{Corr}(X,Y)=1 \iff Y=aX+b \mid a > 0\), \(\operatorname{Corr}(X,Y)=-1 \iff Y=aX+b \mid a < 0\). Correlation has the range \([-1,1]\).
+	%
+	\item \textbf{Linear combinations} of expectations are trivial by the linearity of expectation. For variance: \(\operatorname{Var}(a_1 X_1 + \cdots + a_n X_n + b) = \sum_{i=1}^n \sum_{j=1}^n a_i a_j \operatorname{Cov}(X_i, X_j)\), \(\operatorname{Var}(aX+bY)=a^2 \operatorname{Var}(X) + b^2 \operatorname{Var}(Y) + 2ab \cdot \operatorname{Cov}(X,Y)\).
+	%
+	\item \textbf{With independence}: \(\operatorname{Var}(a_1 X_1 + \cdots + a_n X_n + b) = a_1^2 \operatorname{Var}(X_1) + \cdots + a_n^2 \operatorname{Var}(X_n)\), \(\operatorname{SD}(\cdots) = \sqrt{a_1^2 \sigma_1^2 + \cdots + a_n^2 \sigma_n^2}\), \(\operatorname{Var}(X+Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) = \operatorname{Var}(X-Y)\).
+	%
+	\item \textbf{Sums of RVs}: Let \(W = X+Y\). \(f_W(w)=\int_{-\infty}^{\infty} f(x,w-x)\,dx\). If \(X\) and \(Y\) are independent, can integrate product of marginals. This is convolution: \(f_W = f_X \ast f_Y\).
+	%
+	\item \textbf{Sums of standard distributions}: If \(X_1 \cdots X_n\) are independent Poisson RVs with means \(\mu_1 \cdots \mu_n\), their sum is also Poisson with \(\mu = \mu_1 + \cdots + \mu_n\). Similar for normal distributions, with \(\sigma = \sqrt{\sigma_1^2 + \cdots + \sigma_n^2}\).
+	%
 \end{itemize}
