@@ -1,5 +1,6 @@
 \section{Probability}
 
+\textbf{Bold text signifies truth for both discrete and continuous RVs.}
 
 \subsection*{Counting}
 
@@ -45,13 +46,11 @@
 \subsection*{Discrete Random Variables}
 
 \begin{itemize}
-	\item PMF: \(p_X(x)=P(X=x)\), CDF: \(F_X(x)=P(X \leq x)\). \textbf{CDF is non-decreasing.}
+	\item PMF: \(p_X(x)=P(X=x)\), CDF: \(F_X(x)=P(X \leq x) = \sum_{x_i \leq x} p(x_i)\). \textbf{CDF is non-decreasing.}
 	%
-	\item \(\mathbb{E}(X) = \sum_i x_i \cdot p(x_i)\). Needn't be a possible value. Expectation can be manipulated linearly. \(n\)th moment: \(\mathbb{E}(X^n)\). Absolute moment: \(\mathbb{E}(|X|^n)\).
+	\item \(\mathbb{E}(X) = \sum_i x_i \cdot p(x_i)\). Needn't be a possible value. \textbf{Moments}: \(n\)th moment: \(\mathbb{E}(X^n)\). Absolute moment: \(\mathbb{E}(|X|^n)\).
 	%
 	\item \(\operatorname{Var}(X) = \mathbb{E}(X - \mathbb{E}(X))^2 = \mathbb{E}(X^2) - \mathbb{E}(X)^2\). \(\operatorname{SD}(X) = \sqrt{\operatorname{Var}(X)}\).
-	%
-	\item \textbf{Linearity of \(\mathbb{E}\)}: expectation of the sum of RVs is the sum of their expectations. \textbf{Rescaling}: \(\mathbb{E}(aX + b)=a \mathbb{E}(X) + b\), \(\operatorname{Var}(aX + b) = a^2 \operatorname{Var}(X)\), \(\operatorname{SD}(aX+b) = |a|\operatorname{SD}(X)\).
 	%
 	\item \textbf{Chebyshev Inequality}: for any constant \(k \geq 1\), the probability that \(X\) is more than \(k\) standard deviations away from the mean is no more than \(\frac{1}{k^2}\). \(P(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2}\).
 	%
@@ -65,8 +64,6 @@
 
 \subsection*{Continuous Random Variables}
 
-\textbf{Bold items from the discrete section also apply here.}
-
 \begin{itemize}
 \item The PDF is defined as being the function \(f(x)\) such that its integral, from \(a\) to \(b\), gives the probability \(P(a \leq x \leq b)\), and from \(-\infty\) to \(\infty\) gives \(1\). The derivative of the CDF is the PDF.
 %
@@ -76,7 +73,7 @@
 %
 \item Percentiles: the 75th percentile is the value \(\eta_{0.75}\) s.t. \(P(X < \eta) = 0.75\). Thus we can calculate it with the inverse of the CDF: \(\eta_{0.5}=F^{-1}(0.5)\), which also happens to be the \textit{median}, sometimes written just \(\eta\).
 %
-\item \(\mathbb{E}(X) = \int_{-\infty}^{\infty} x \cdot f(x)\,dx = \mu_X\), \(\mathbb{E}(h(X)) = \int_{-\infty}^{\infty} h(x) \cdot f(x)\,dx\) (check \(X\) / \(x\)).
+\item \(\mathbb{E}(X) = \int_{-\infty}^{\infty} x \cdot f(x)\,dx = \mu_X\), \(\mathbb{E}(h(X)) = \int_{-\infty}^{\infty} h(x) \cdot f(x)\,dx\).
 %
 \item \(\operatorname{Var}(X) = \mathbb{E}((X - \mathbb{E}(X))^2) = \mathbb{E}(X^2) - \mu^2\), \(\operatorname{SD}(X) = \sigma_X = \sqrt{\operatorname{Var}(X)}\).
 %
@@ -101,3 +98,17 @@
 %
 \item Relation to Poisson: Poisson counts the number of arrivals each minute, while exponential counts the time between arrivals at a drive-through.
 \end{itemize}
+
+\subsection*{Transformations of Random Variables}
+
+\begin{itemize}
+	\item \textbf{Linearity of \(\mathbb{E}\)}: expectation of the sum of RVs is the sum of their expectations. \textbf{Rescaling}: \(\mathbb{E}(aX + b)=a \mathbb{E}(X) + b\), \(\operatorname{Var}(aX + b) = a^2 \operatorname{Var}(X)\), \(\operatorname{SD}(aX+b) = |a|\operatorname{SD}(X)\).
+	%
+	\item \(\mathbb{E}(h(X)) = \int_{-\infty}^{\infty} h(x) \cdot f(x)\,dx\).
+	%
+	\item \textbf{Transformations of RVs are themselves RVs}: if a transformation of a random variable \(Y=g(X)\) is monotonically increasing, like radius to area, then CDF is \(F_Y(y)=F_X(g^{-1}(y))\). If monotonically decreasing, like speed to time, then \(F_Y(y)=1 - F_X(g^{-1}(y))\) since the inequality is flipped.
+	%
+	\item PDF is \(f_Y(y) = f_X(g^{-1}(y)) \cdot |\frac{d}{dy} g^{-1}(y)|\), where the derivative accounts for the change in width of the curve.
+\end{itemize}
+
+\subsection*{Joint Probability Distributions}
