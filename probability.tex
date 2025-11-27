@@ -1,6 +1,6 @@
 \section{Probability}
 
-\textbf{Bold text signifies truth for both discrete and continuous RVs.}
+\textbf{Bold text signifies truth for both discrete and continuous RVs.} If bold but not explicit, change \(p(x)\) to \(f(x)\) or integral to a sum, v.v.
 
 \subsection*{Counting}
 
@@ -35,7 +35,7 @@
 	%
 	\item Multiplication rule: \(P(E_1 \cap E_2 \cap \cdots \cap E_n) = P(E_1) \cdot P(E_2 | E_1) \cdot P(E_3 | E_1 \cap E_2) \cdots P(E_n | E_1 \cap \cdots \cap E_{n-1})\).
 	%
-	\item Independent \(\iff P(F|E) = P(F) \iff P(E|F) = P(E) \iff P(E \cap F) = P(E) \cdot P(F)\).
+	\item \textit{Events} are independent \(\iff P(F|E) = P(F) \iff P(E|F) = P(E) \iff P(E \cap F) = P(E) \cdot P(F)\). \textbf{Random variables} are thus independent \(\iff p_{Y|X}(y|x)=p_Y(y) \iff p_{X|Y}(x|y)=p_X(x) \iff p(x,y) = p_X(x) \cdot p_Y(y)\) for all \((x,y)\).
 	%
 	\item Three or more events are mutually independent if the above multiplication rule applies to all pairs, and all of them together.
 	%
@@ -122,8 +122,6 @@
 	%
 	\item Marginal probabilities allow you to calculate individual variables' PMFs from their JPMF: \(p_X(x)=\sum_y p(x,y)\), \(p_Y(y)=\sum_x p(x,y)\). If given a table, add up the values in each column or row.
 	%
-	\item Independent \(\iff p(x,y) = p_X(x) \cdot p_Y(y)\) for all \((x,y)\).
-	%
 	\item \(\mathbb{E}(g(X,Y)) = \sum_x \sum_y g(x,y) \cdot p(x,y)\).
 \end{itemize}
 
@@ -133,8 +131,6 @@
 	\item Imagine a rectangle \(A = \{(x,y) \mid a \leq x \leq b, c \leq y \leq d\}\). The probability \(P((X,Y) \in A) = P(a \leq X \leq b, c \leq Y \leq d) = \int_a^b (\int_c^d f(x,y)\,dy)\,dx = \int_c^d (\int_a^b f(x,y)\,dx)\,dy\). This is the probability that the random variables lie in the same rectangle together.
 	%
 	\item Marginal probabilities: \(f_X(x) = \int_{-\infty}^{\infty} f(x,y)\,dy\), \(f_Y(y)=\int_{-\infty}^{\infty} f(x,y)\,dx\). If given a support, like \(a \leq X \leq b\) and \(c \leq Y \leq d\), use the bounds of the \textit{variable you're integrating with respect to} (which avoids improper integrals).
-	%
-	\item Independent \(\iff f(x,y) = f_X(x) \cdot f_Y(y)\) for all \((x,y)\).
 	%
 	\item \(\mathbb{E}(g(X,Y)) = \int_{-\infty}^{\infty} (\int_{-\infty}^{\infty} g(x,y) \cdot f(x,y)\,dx)\,dy\).
 \end{itemize}
@@ -156,8 +152,28 @@
 	%
 	\item \textbf{With independence}: \(\operatorname{Var}(a_1 X_1 + \cdots + a_n X_n + b) = a_1^2 \operatorname{Var}(X_1) + \cdots + a_n^2 \operatorname{Var}(X_n)\), \(\operatorname{SD}(\cdots) = \sqrt{a_1^2 \sigma_1^2 + \cdots + a_n^2 \sigma_n^2}\), \(\operatorname{Var}(X+Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) = \operatorname{Var}(X-Y)\).
 	%
-	\item \textbf{Sums of RVs}: Let \(W = X+Y\). \(f_W(w)=\int_{-\infty}^{\infty} f(x,w-x)\,dx\). If \(X\) and \(Y\) are independent, can integrate product of marginals. This is convolution: \(f_W = f_X \ast f_Y\).
+	\item \textbf{Sums of RVs}: Let \(W = X+Y\). \(f_W(w)=\int_{-\infty}^{\infty} f(x,w-x)\,dx\). If \(X\) and \(Y\) are independent, can integrate product of marginals. This is convolution: \(f_W = f_X \ast f_Y\). If discrete, sum instead.
 	%
 	\item \textbf{Sums of standard distributions}: If \(X_1 \cdots X_n\) are independent Poisson RVs with means \(\mu_1 \cdots \mu_n\), their sum is also Poisson with \(\mu = \mu_1 + \cdots + \mu_n\). Similar for normal distributions, with \(\sigma = \sqrt{\sigma_1^2 + \cdots + \sigma_n^2}\).
 	%
+\end{itemize}
+
+\subsection*{Conditional and Limit Distributions}
+
+\subsubsection*{Conditional}
+
+\begin{itemize}
+	\item \textbf{The probability that} \(Y=y\) given we know \(X=x\) is \(P_{Y|X}(y|x) = \frac{p(x,y)}{p_X(x)}\).
+	%
+	\item \textbf{Conditional mean}: \(\mu_{Y|X=x} = \mathbb{E}(Y|X = x) = \sum_y y \cdot p_{Y|X}(y|x)\), \(\mathbb{E}(Y|X = x) = \int_{-\infty}^{\infty} y \cdot f_{Y|X}(y|x)\,dy\). For a function \(h(y)\), replace \(y\) with \(h(y)\).
+	%
+	\item \textbf{Conditional variance}: \(\sigma_{Y|X=x}^2 = \operatorname{Var}(Y|X = x) = \mathbb{E}((Y - \mu_{Y|X=x})^2 | X=x) = \mathbb{E}(Y^2 | X=x) - \mu_{Y|X=x}^2\).
+	%
+	\item \textbf{Law of total expectation/variance:} \(\mathbb{E}(Y|X)\) and \(\operatorname{Var}(Y|X)\) are themselves random variables with their own mean and variance: \(\mathbb{E}(Y) = \mathbb{E}(\mathbb{E}(Y|X))\), \(\operatorname{Var}(Y) = \operatorname{Var}(\mathbb{E}(Y|X)) + \mathbb{E}(\operatorname{Var}(Y|X))\).
+\end{itemize}
+
+\subsubsection*{Limit}
+
+\begin{itemize}
+	\item lorem
 \end{itemize}
