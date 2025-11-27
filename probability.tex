@@ -120,13 +120,17 @@
 	%
 	\item Marginal probabilities allow you to calculate individual variables' PMFs from their JPMF: \(p_X(x)=\sum_y p(x,y)\), \(p_Y(y)=\sum_x p(x,y)\). If given a table, add up the values in each column or row.
 	%
-	\item Independent if \(p(x,y) = p(x) \cdot p(y)\) for all \((x,y)\).
+	\item Independent \(\iff p(x,y) = p_X(x) \cdot p_Y(y)\) for all \((x,y)\).
 \end{itemize}
 
 \subsubsection*{Continuous}
 
 \begin{itemize}
-
-
-
+	\item Imagine a rectangle \(A = \{(x,y) \mid a \leq x \leq b, c \leq y \leq d\}\). The probability \(P((X,Y) \in A) = P(a \leq X \leq b, c \leq Y \leq d) = \int_a^b (\int_c^d f(x,y)\,dy)\,dx = \int_c^d (\int_a^b f(x,y)\,dx)\,dy\). This is the probability that the random variables lie in the same rectangle together.
+	%
+	\item Marginal probabilities: \(f_X(x) = \int_{-\infty}^{\infty} f(x,y)\,dy\), \(f_Y(y)=\int_{-\infty}^{\infty} f(x,y)\,dx\). If given a support, like \(a \leq X \leq b\) and \(c \leq Y \leq d\), use the bounds of the \textit{variable you're integrating with respect to} (which avoids improper integrals).
+	%
+	\item Independent \(\iff f(x,y) = f_X(x) \cdot f_Y(y)\) for all \((x,y)\).
+	%
+	\item \textbf{All of these definitions can be extended to more than one random variable by repeating integration or summing over triples, etc.}.
 \end{itemize}
