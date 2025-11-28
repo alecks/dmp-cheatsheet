@@ -6,8 +6,6 @@
 \usepackage{enumitem} % to remove left margins of itemizes
 \usepackage{titlesec} % adjust spacing between headers
 
-% Line spacing
-\setlength{\baselineskip}{0.1\baselineskip} % minimise line spacing
 \setlength{\parindent}{0pt} % no paragraph indent
 
 % Itemize spacing
@@ -23,7 +21,10 @@
 \setlength{\columnseprule}{0.2pt} % add rule between columns
 
 \begin{document}
-\scriptsize % font size. goes from tiny to scriptsize, footnotesize, small, normalsize.
+
+\fontsize{6pt}{0.1\baselineskip}
+\selectfont
+
 \begin{multicols*}{3}
 
 \input{discrete-mathematics.tex}
