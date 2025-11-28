@@ -1,6 +1,6 @@
 \section{Probability}
 
-\textbf{Bold text signifies truth for both discrete and continuous RVs.} If bold but not explicit, change \(p(x)\) to \(f(x)\) or integral to a sum, v.v.
+\textbf{Bold text \textit{anywhere} signifies truth for both discrete and continuous RVs.} If bold but not explicit, change \(p(x)\) to \(f(x)\) or integral to a sum, v.v.
 
 \subsection*{Counting}
 
@@ -175,5 +175,17 @@
 \subsubsection*{Limit}
 
 \begin{itemize}
-	\item lorem
+	\item If we have a \textbf{random sample}, a set of RVs with size \(n\) s.t. each RV is independent and identically distributed, the sample total \(T = \sum_{i=1}^n X_i\). The sample mean \(\bar{X} = \frac{T}{n}\). These are themselves RVs.
+	%
+	\item \textbf{Properties} of \(T\): \(\mathbb{E}(T)=n \cdot \mu\), where \(\mu\) is the underlying mean of the distribution and \(\sigma\) is the SD. \(\operatorname{Var}(T)=n\sigma^2\), \(\operatorname{SD}(T)=\sqrt{n} \cdot \sigma\). If the \(X_i\) are normally distributed, so is \(T\).
+	%
+	\item \textbf{Properties} of \(\bar{X}\): \(\mathbb{E}(\mu)\), \(\operatorname{Var}(\bar(X) = \frac{\sigma}{n})\), \(\operatorname{SD}(\bar{X}) = \frac{\sigma}{\sqrt{n}}\). If the \(X_i\) are normal, so is \(\bar{X}\).
+	%
+	\item \textbf{Law of large numbers}: as \(n \to \infty\), the following are true: \(\bar{X}\) converges to \(\mu\); \(\mathbb{E}((\bar{X} - \mu)^2) \to 0\); \(P((\bar{X} - \mu) \geq \epsilon) \to 0\) for \(\epsilon > 0\).
+	%
+	\item \textbf{Central limit theorem}: summing distributions leads to a narrower and narrower distribution; with large \(n\), the less skewed the distribution gets, thus approaching normal. The peak of the resulting normal distrib. will be around the same mean \(\mu\).
+	%
+	\item \textbf{For IID RVs}, \(\lim_{n \to \infty} \bar{X} \sim N(n \mu, \frac{\sigma}{\sqrt{n}})\), and \(\lim_{n \to \infty} T \sim N(n \mu, \sqrt{n} \cdot \sigma)\).
+	%
+	\item We say that they are \textbf{asymptotically normal}.
 \end{itemize}
