@@ -1,1 +1,80 @@
 \section{Discrete Mathematics}
+
+\subsection*{Proofs and Logic}
+
+\begin{itemize}
+	\item \(P \implies Q \equiv \neg P \land Q\), \(P \iff Q \equiv (P \implies Q) \land (Q \implies P)\), \(\neg(P \implies Q) \equiv P \land \neg Q\), \(\neg \forall x P(x) \equiv \exists x \neg P(x)\), \(\neg \exists x P(x) \equiv \forall x \neg P(x)\).
+	%
+	\item For \(P \implies Q\), the converse gives \(Q \implies P\) (not equiv.), inverse: \(\neg P \implies \neg Q\) (not equiv.), contrapositive: \(\neg Q \implies \neg P\).
+	%
+	\item To show \(p \implies Q\), assume \(P\) and show \(Q\). To show \(\forall x P(x)\), use arbitrary \(x\), show \(P(x)\). To show \(\exists x P(x)\), give a witness.
+	%
+	\item Odd: \(2n+1\). Divisibility: if \(a \mid b\), then \(b=ak\).
+	%
+	\item Contraposition: \(P \implies Q\) becomes \(\neg Q \implies \neg P\), prove the contrapositive.
+	%
+	\item Contradiction: assume false and contradict false assumption. Use "lowest terms" to contradict divisibility.
+	%
+	\item Induction: prove base case, assume \(P(k)\), prove \(P(k+1)\). This shows that for any arbitrary \(k\), \(k+1\) will always be true. Strong induction lets us assume that \textit{all} previous cases are true.
+\end{itemize}
+
+\subsection*{Sets and Relations}
+
+\begin{itemize}
+	\item Finite set if \(|A| \in \mathbb{Z}\).
+	%
+	\item Commutative: \(A \cup B = B \cup A\), associative: \((A \cup B) \cup C = (A \cup C) \cup B\), distributive: \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\).
+	%
+	\item De Morgan: \((A \cup B)^c = A^c \cap B^c\) v.v., absorption: \(A \cup (A \cap B) = A\) v.v., set difference: \(A-B = A \cap B^c\).
+	%
+	\item Inclusion/exclusion: \(|A \cup B| = |A| + |B| - |A \cap B|\), \(|A \cup B \cup C| = |A| + |B| + |C| = |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|\).
+	%
+	\item Cartesian product: \(|A \times B| = |A| \cdot |B|\).
+	%
+	\item If \(a \leq b\) and \(b \leq a\), \(a = b\) and if \(A \subset B\) and \(B \subset A\), \(A = B\). This is antisymmetry.
+	%
+	\item Bijective \(\iff\) has inverse. Injective (one-to-one, \(f(a) = f(b) \implies a = b\)) and surjective (onto, \(\forall y \in B, \exists x \in A : f(x) = y\)).
+	%
+	\item Image: \(f(A) = \{f(x) : x \in A\}\) (the set of outputs for a set of inputs to a function). Preimage: \(f^{-1}(B) = {x \in X : f(x) \in B}\) (the set of inputs that map to a set of outputs of a function).
+	%
+	\item Reflexive: \(a R a\), symmetric: \(a R b \implies b R a\), transitive: \(a R b\) and \(b R c \implies a R c\). Antisymmetric: if \(a R b\) and \(b R a \implies a = b\).
+	%
+	\item Equivalence relation if reflexive, symmetric and transitive. Partial order if reflexive, anti-symmetric and transitive. Total order if you can compare any two elements.
+	%
+	\item One equivalence relation is cardinalities being equal: \(A \sim B \iff \exists\,\text{bijection}\,f : A \to B\).
+	%
+	\item Equivalence classes: \([a] = \{x : x \sim a\}\). This is the set of all elements that are equivalent to \(a\).
+	%
+	\item Hasse diagram: draw relations (pairs), but don't draw transitive, reflexive or symmetric relations. (For POs; for TOs, it is just a straight 'chain').
+\end{itemize}
+
+\subsection*{Modular Arithmetic and GCD}
+
+\begin{itemize}
+	\item GCD: if \(a = bq + r\), then \(\gcd(a,b) = \gcd(b,r)\). LCM: \(\operatorname{lcm}(a,b) = \frac{|ab|}{\gcd(a,b)}\).
+	%
+	\item Modular equivalences: \(a\) and \(b\) have the same non-negative remainder when divided by \(n\) if and only if:
+	\[n \mid (a-b) \iff a \equiv b \mod n \iff a \equiv b + kn \iff a \mod n = b \mod n\]
+	%
+	\item Cancellation rule: if \(\gcd(k,n)=1\) and \(ak \equiv bk \pmod{n}\), then \(a \equiv b \pmod{n}\).
+	%
+	\item Diophantine equations (example): \(52x + 87y = 123\). Divide to simplify: since \(\gcd(51,87) = 3 \mid 123\), write \(17x+29y=41 \pmod{17}\). Then simplify to find \(y=2 \pmod{17}\), and substitute \(y=2+17k\) into the original equation.
+	%
+	\item Computing \(a^k \mod n\) when \(k\) is a power of two: write as \((a^2 \mod n)^{\frac{k}{2}} \mod n\), repeat.
+	%
+	\item When \(k\) is not a power of two: write \(k\) as a sum of powers of two, compute these powers starting from 1, then 2, 4 etc., by squaring the previous results. Then multiply together the results for each number in the sum (since you may have to compute powers in between those needed for the sum), and take the mod.
+	%
+	\item Modular inverse: we want \(x\) s.t. \(ax \equiv 1 \pmod{n}\). First, show that \(\gcd(a,n) = 1\). Then back-substitute to find \(1=ax+ny\). The coefficient of \(a\), which is \(x\), is the inverse. Find the \textit{positive} inverse \(x_{+} = n - x_{-}\).
+\end{itemize}
+
+\subsection*{RSA Cryptography}
+
+\begin{itemize}
+	\item Choose two prime numbers \(p\) and \(q\). Choose a positive integer \(e\) relatively prime to \((p-1)(q-1)\).
+	%
+	\item Public key: \((pq,e)\). Since \(pq\) can't be decomposed into \(p\) and \(q\) with large enough numbers, this is safe.
+	%
+	\item Private key: \((pq,d)\) where \(d\) is a positive inverse to \(e \mod (p-1)(q-1)\).
+	%
+	\item Encryption: \(C = M^e \mod pq\) where \(M < pq\). Decryption: \(M = C^d \mod pq\).
+\end{itemize}
