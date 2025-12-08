@@ -24,14 +24,17 @@
 	%
 	\item Axioms: for countably many \textit{mutex} events, \(P(\bigcup E_i) = \sum_i P(E_i)\). If not mutex, this equality is replaced with \(\leq\).
 	%
-	\item Elementary events are those such that all events have probability \(\frac{1}{|\Omega|}\).
+	\item Elementary if all events have probability \(\frac{1}{|\Omega|}\).
 	%
 	\item \(P(F-E) = P(F \cap E^c) = P(F)-P(F \cap E)\). This is the set difference law.
 	%
+	\item Law of total probability: \(P(F) = P(F \cap E_1) + ... + P(F \cap E_i) = \sum_i P(F | E_i) P(E_i)\). 
+	%
 	\item De Morgan's: \((E \cap F)^c = E^c \cup F^c\) (flip intersection/union and take complement).
 	%
+	\item \(P(E|F) = \frac{P(E \cap F)}{P(F)}\). All axioms work fine, just add the `given' part to each. Rearrange if necessary.
 	%
-	\item \(P(E|F) = \frac{P(E \cap F)}{P(F)}\). All axioms work fine, just add the `given' part to each.
+	\item Bayes' Theorem: \(P(E | F) = \frac{P(F | E)P(E)}{P(F)}\).
 	%
 	\item Multiplication rule: \(P(E_1 \cap E_2 \cap \cdots \cap E_n) = P(E_1) \cdot P(E_2 | E_1) \cdot P(E_3 | E_1 \cap E_2) \cdots P(E_n | E_1 \cap \cdots \cap E_{n-1})\).
 	%
