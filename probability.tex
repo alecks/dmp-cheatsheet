@@ -12,6 +12,8 @@
 	\item \(P_{n,k} = \frac{n!}{(n-k)!}\) (\(\binom{n}{k}\) but order matters), \(\binom{n}{k} = \frac{n!}{k!(n-k)!}\)
 	%
 	\item The number of ways to choose something OR something else is addition. Choosing two things together (AND) is multiplication. If we are to find `at least one (up to 3)', it would be the number of ways to choose 1 OR 2 OR 3.
+	%
+	\item Stars and bars: dividing items between different bins. For example, choosing 3 scoops from an ice cream shop with 5 distinct flavours. \(n=5\) types and \(k=3\) items to choose. So there are \(k+(n-1)\) total positions, where \(k\) is the number of stars and \((n-1)\) is the number of bars. \(\binom{k+(n-1)}{k}\) gives us the number of unique ways to choose 3 scoops from 5 flavours (can choose the same flavour multiple times, unordered). Now imagine sharing \(5\) identical chocolates among \(3\) people. Need 2 bars to separate the people's bins, so 7 total positions. This gives us \(\binom{7}{5}\), the number of positions for the stars.
 \end{itemize}
 
 
@@ -188,7 +190,5 @@
 	%
 	\item \textbf{Central limit theorem}: summing distributions leads to a narrower and narrower distribution; with large \(n\), the less skewed the distribution gets, thus approaching normal. The peak of the resulting normal distrib. will be around the same mean \(\mu\).
 	%
-	\item \textbf{For IID RVs}, \(\lim_{n \to \infty} \bar{X} \sim N(n \mu, \frac{\sigma}{\sqrt{n}})\), and \(\lim_{n \to \infty} T \sim N(n \mu, \sqrt{n} \cdot \sigma)\).
-	%
-	\item We say that they are \textbf{asymptotically normal}.
+	\item \textbf{For IID RVs}, \(\lim_{n \to \infty} \bar{X} \sim N(n \mu, \frac{\sigma}{\sqrt{n}})\), and \(\lim_{n \to \infty} T \sim N(n \mu, \sqrt{n} \cdot \sigma)\); \textbf{asymptotically normal}.
 \end{itemize}

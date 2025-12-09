@@ -3,13 +3,15 @@
 \subsection*{Proofs and Logic}
 
 \begin{itemize}
-	\item \(P \implies Q \equiv \neg P \land Q\), \(P \iff Q \equiv (P \implies Q) \land (Q \implies P)\), \(\neg(P \implies Q) \equiv P \land \neg Q\), \(\neg \forall x P(x) \equiv \exists x \neg P(x)\), \(\neg \exists x P(x) \equiv \forall x \neg P(x)\).
+	\item \(P \implies Q \equiv \neg P \lor Q\), \(P \iff Q \equiv (P \implies Q) \land (Q \implies P)\), \(\neg(P \implies Q) \equiv P \land \neg Q\), \(\neg \forall x P(x) \equiv \exists x \neg P(x)\), \(\neg \exists x P(x) \equiv \forall x \neg P(x)\).
 	%
 	\item For \(P \implies Q\), the converse gives \(Q \implies P\) (not equiv.), inverse: \(\neg P \implies \neg Q\) (not equiv.), contrapositive: \(\neg Q \implies \neg P\).
 	%
 	\item To show \(p \implies Q\), assume \(P\) and show \(Q\). To show \(\forall x P(x)\), use arbitrary \(x\), show \(P(x)\). To show \(\exists x P(x)\), give a witness.
 	%
-	\item Odd: \(2n+1\). Divisibility: if \(a \mid b\), then \(b=ak\).
+	\item Odd: \(2n+1\), even: \(2n\). Divisibility: if \(a \mid b\), then \(b=ak\).
+	%
+	\item Addition/subtraction of numbers with the same parity is even, different parity is odd. Multiplication: if any factor is even, the product is even. Product is odd only if all factors are odd.
 	%
 	\item Contraposition: \(P \implies Q\) becomes \(\neg Q \implies \neg P\), prove the contrapositive.
 	%
@@ -27,7 +29,7 @@
 	%
 	\item De Morgan: \((A \cup B)^c = A^c \cap B^c\) v.v., absorption: \(A \cup (A \cap B) = A\) v.v., set difference: \(A-B = A \cap B^c\).
 	%
-	\item Inclusion/exclusion: \(|A \cup B| = |A| + |B| - |A \cap B|\), \(|A \cup B \cup C| = |A| + |B| + |C| = |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|\).
+	\item Inclusion/exclusion: \(|A \cup B| = |A| + |B| - |A \cap B|\), \(|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|\).
 	%
 	\item Cartesian product: \(|A \times B| = |A| \cdot |B|\).
 	%
@@ -53,7 +55,7 @@
 \begin{itemize}
 	\item GCD: if \(a = bq + r\), then \(\gcd(a,b) = \gcd(b,r)\). LCM: \(\operatorname{lcm}(a,b) = \frac{|ab|}{\gcd(a,b)}\).
 	%
-	\item Modular equivalences: \(a\) and \(b\) have the same non-negative remainder when divided by \(n\) if and only if \(n \mid (a-b) \iff a \equiv b \mod n \iff a \equiv b + kn \iff a \mod n = b \mod n\).
+	\item Modular equivalences: \(a\) and \(b\) have the same non-negative remainder when divided by \(n\) if and only if \(n \mid (a-b) \iff a \equiv b \pmod{n}\iff a = b + kn \iff a \mod n = b \mod n\).
 	%
 	\item Cancellation rule: if \(\gcd(k,n)=1\) and \(ak \equiv bk \pmod{n}\), then \(a \equiv b \pmod{n}\).
 	%
